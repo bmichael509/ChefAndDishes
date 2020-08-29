@@ -1,0 +1,39 @@
+@model ChefNDishes.Models.Chef;
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+    <title>Add A dish</title>
+</head>
+<body>
+    <div class="d-flex p-5">
+    <h1>Add a Chef</h1>
+    <br>
+    <a href="/">Home</a>
+        <div class="row">
+            <form asp-action="CreateChef" asp-controller="Home" method="post">
+                <div class="form-group row">
+                    <span class="col-sm-8 offset-sm-4 text-danger" asp-validation-for="FirstName"></span>
+                    <label asp-for="FirstName" class="col-sm-4"></label>
+                    <input asp-for="FirstName" class="col-sm-8 form-control">
+                </div>
+                <div class="form-group row">
+                    <span class="col-sm-8 offset-sm-4 text-danger"  asp-validation-for="LastName"></span>
+                    <label asp-for="LastName" class="col-sm-4"></label>
+                    <input asp-for="LastName" class="col-sm-8 form-control">
+                </div>
+                <div class="form-group row">
+                    <span class="col-sm-8 offset-sm-4 text-danger"  asp-validation-for="Age"></span>
+                    <label asp-for="Age" class="col-sm-4"></label>
+                    <Input asp-for="Age" class="col-sm-8 form-control" max='@DateTime.Now.ToString("dd/MM/yyyy")'>
+                </div>
+                <div class="form-group row">
+                    <input value="Add Chef" type="submit">  
+                </div>  
+            </form>
+        </div>
+    </div>
+</body>
+</html>

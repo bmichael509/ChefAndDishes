@@ -1,0 +1,44 @@
+@using ChefNDishes.Models
+@model List<Chef>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="container">
+        <div id="HeadLinks">
+            <h2><a href="/">Chefs</a> | <a href="/Dishes">Dishes</a></h2>
+            <a href="/chefs/new">Add a Chef</a>
+        </div>
+        <div class="BodyTable">
+            <h3>Check out our roster of Chefs!</h3>
+            <hr>
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Age</th>
+                    <th># of Dishes</th>
+                </tr>
+                @foreach(var thisGuy in Model)
+                    {
+                        var dateNow = DateTime.Now;
+                        var yearsOld = dateNow.Year - @thisGuy.Age.Year;
+                        if (@thisGuy.Age.Date > dateNow.AddYears(-yearsOld))
+                        {
+                            yearsOld--;
+                        }
+                        <tr>
+                            <td>@thisGuy.FirstName @thisGuy.LastName</td>
+                            <td>@yearsOld</td>
+                            <td>@thisGuy.Dishes.Count</td>
+                        </tr>
+                    }
+                    
+            </table>
+        </div>
+    </div>
+</body>
+</html>
